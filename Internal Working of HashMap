@@ -1,0 +1,20 @@
+## How HashMap works internally in java?
+
+- When we create a HashMap object, internally it creates a bucket structure.
+- Since the initial capacity of a Map is 16, so it creates a 16 bucket (index 0-15)
+- Each bucket internally uses a linked list (every bucket is considered as a Linked List)
+- Each Linked list can have N number of nodes. The internal structure of a Linked list node is like [key, value, hash, next]
+- Now, let's say we create a Person object and try to put in the map like below:
+   map.put(obj, "Some text");
+- How will our HashMap identify where we need to put this entry?
+- So when we call the put method, inside the put method, there is a method called hash(), which will calculate the hash value of the key we passed in the put() method.
+- Then based on the modular operator, it will identify the index:
+   index = hash & (n-1);
+- For example, while saving our first entry, the index is calculated as 6, then our entry will be stored in the bucket with index 6.
+- Our bucket 6 is nothing but a LinkedList and stores 1 node.
+- Now let's say we are trying to add our second object, then it evaluates the index as 9. So, simply this node will go and store in bucket 9.
+- Now, let's try to add the third object, again it evaluates the index as 6 coincidently.  But there is already 1 node stored at bucket 6. This situation is called a hashing collision. In this case, the map will immediately check if the contents are the same or different using the equals method. If it finds different, then it will store the entry to the same bucket 6.
+- Now our bucket 6 contains 2 nodes.
+- If there is a null key passed in the put method, the entry will be placed in the bucket 0.
+- There is 1 enhancement in hashMap in Java 8.
+- In Java 8 HashMap, each bucket is initially a Linkedlist, but after a certain threshold, it converts into a Balanced Tree.
