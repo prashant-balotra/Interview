@@ -1,4 +1,4 @@
-### Major Features introduced in Various Java versions
+# Major Features introduced in Various Java versions
 
 Here is a detailed list of major features introduced in each Java version from Java 5 to the latest (Java 20), including evolution of some features like the switch statement. The list includes feature explanations and code examples where applicable.
 
